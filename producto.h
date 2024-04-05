@@ -12,8 +12,6 @@ protected:
 	int existencias;
 	int limite;
 public:
-	/*producto();
-	producto(string, string, string, string, double, int, int);*/
 	virtual string getCodigo() = 0;
 	virtual string getNombre() = 0;
 	virtual string getDesc() = 0;
