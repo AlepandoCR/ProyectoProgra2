@@ -2,7 +2,7 @@
 #define PRODPERECEDERO_H
 #include "perecedero.h"
 #include "producto.h"
-class prodPerecedero : public perecedero, public producto
+class prodPerecedero : protected perecedero, public producto
 {
 public:
     virtual string getCodigo() = 0;
@@ -36,5 +36,6 @@ protected:
     int limite;
     bool nacional;
     double peso;
+    prodPerecedero();
 };
 #endif

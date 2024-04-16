@@ -82,7 +82,7 @@ void conserva::setCodigo(string cod)
 
 void conserva::setNombre(string nomComercial)
 {
-	nombreComercial = nomComercial
+	nombreComercial = nomComercial;
 }
 
 void conserva::setDescripcion(string desc)
