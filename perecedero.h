@@ -19,27 +19,27 @@ public:
     perecedero(string, string, string, string, double, int, int, bool, double, fecha*);
     ~perecedero();
 
-    virtual string getCodigo();
-    virtual string getNombre();
-    virtual string getDesc();
-    virtual string getCategoria();
-    virtual double getPrecioCosto();
-    virtual int getExistencias();
-    virtual int getLimite();
-    virtual bool getNacional();
-    virtual double getPeso();
+    string getCodigo();
+    string getNombre();
+    string getDesc();
+    string getCategoria();
+    double getPrecioCosto();
+    int getExistencias();
+    int getLimite();
+    bool getNacional();
+    double getPeso();
 
-    virtual string toString();
+    string toString();
 
-    virtual void setCodigo(string);
-    virtual void setNombre(string);
-    virtual void setDescripcion(string);
-    virtual void setCategoria(string);
-    virtual void setExistencias(int);
-    virtual void setPrecioCosto(double);
-    virtual void setLimite(int);
-    virtual void setNacional(bool);
-    virtual void setPeso(double);
+    void setCodigo(string);
+    void setNombre(string);
+    void setDescripcion(string);
+    void setCategoria(string);
+    void setExistencias(int);
+    void setPrecioCosto(double);
+    void setLimite(int);
+    void setNacional(bool);
+    void setPeso(double);
 };
 
 #endif
