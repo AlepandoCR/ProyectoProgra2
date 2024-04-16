@@ -2,6 +2,16 @@
 
 perecedero::perecedero()
 {
+	codigo = "";
+	nombreComercial = "";
+	descripcion = "";
+	categoria = "";
+	precioCosto = 0.0;
+	existencias = 0;
+	limite = 0;
+	nacional = true;
+	peso = 0.0;
+	ptrFecha = NULL;
 }
 
 perecedero::perecedero(string cod, string nC, string desc, string cat, double pC, int exist, int lim, bool nac, double _peso, fecha* feIngreso)
