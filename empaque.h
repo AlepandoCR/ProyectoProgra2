@@ -1,8 +1,16 @@
 #ifndef EMPAQUE_H
 #define EMPAQUE_H
-class empaque
-{
+
+class empaque {
 public:
-	bool tripa;
+    empaque(bool tripa) : tripa(tripa) {}
+
+    bool isEmpaquetadoConTripa() const {
+        return tripa;
+    }
+
+private:
+    bool tripa;
 };
+
 #endif

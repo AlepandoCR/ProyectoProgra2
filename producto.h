@@ -1,6 +1,7 @@
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
 #include "fecha.h"
+#include "categoria.h"
 class producto : public fecha
 {
 protected:

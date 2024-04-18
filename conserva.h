@@ -1,7 +1,7 @@
 #ifndef CONSERVA_H
 #define CONSERVA_H
 #include "producto.h"
-class conserva : protected producto
+class conserva : public producto
 {
 private:
 	string codigo;

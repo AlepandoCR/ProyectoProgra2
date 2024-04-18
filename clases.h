@@ -10,4 +10,5 @@
 #include "perecedero.h"
 #include "prodPerecedero.h"
 #include "producto.h"
+#include "listaProd.h"
 #endif 
