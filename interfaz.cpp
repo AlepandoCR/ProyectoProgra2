@@ -51,9 +51,10 @@ void agregarProducto(listaProd &lista) {
     cin >> lim;
     cout << endl << "El producto es envasado (si/no): ";
     cin >> eleccion;
-    if (eleccion == "Si" || "si") {
+    /*if (eleccion == "Si" || "si") {
         envas = true;
-    }
+    }*/
+    envas = (eleccion == "Si" || eleccion == "si");
     conserva* product = new conserva(codigo, nombre, desc, categoria, precio, exis, lim, envas, fech);
     lista.agregarProducto(product);
 
@@ -103,7 +104,10 @@ void interfaz::menuVentas() {
     int menu = 0;
     while (menu != 2) {
         cout << "1-Crear factura nueva" << endl << "2-Volver" << endl;
-        cin >> menu;
+        if (!(cin >> menu)) {
+            menu = -1;
+            *****
+        }
         switch (menu)
         {
         case 1:
