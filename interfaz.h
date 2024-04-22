@@ -9,15 +9,15 @@ public:
    
     void menuFacturas();
 
-    void menuProductos();
+    void menuProductos(listaProd&);
 
-    void menuManten();
+    void menuManten(listaProd&);
 
     void menuVentas();
 
     void menuReportes();
 
-    void menuPrinci();
+    void menuPrinci(listaProd&);
 
 };
 #endif
