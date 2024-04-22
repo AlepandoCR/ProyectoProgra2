@@ -5,11 +5,9 @@ listaProd::~listaProd()
     nodoProd* actual = inicio;
     while (actual != nullptr) {
         nodoProd* siguiente = actual->siguiente;
-        cout << "data: " << actual->data << endl;
         delete actual->data; 
         delete actual;       
         actual = siguiente;
-        cout << "producto eliminado" << endl;
     }
 }
 
@@ -24,7 +22,7 @@ void listaProd::imprimirLista() const
 {
     nodoProd* actual = inicio;
     while (actual != nullptr) {
-        cout << "Código: " << actual->data->getCodigo() << ", Nombre: " << actual->data->getNombre() << endl;
+        cout << "Codigo: " << actual->data->getCodigo() << ", Nombre: " << actual->data->getNombre() << endl;
         actual = actual->siguiente;
     }
 }

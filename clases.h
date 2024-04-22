@@ -1,5 +1,14 @@
 #ifndef CLASES_H
 #define CLASES_H
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <sstream>
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+using std::stringstream;
 #include "abarrote.h"
 #include "carne.h"
 #include "categoria.h"
@@ -11,4 +20,5 @@
 #include "prodPerecedero.h"
 #include "producto.h"
 #include "listaProd.h"
+#include "persona.h"
 #endif 
