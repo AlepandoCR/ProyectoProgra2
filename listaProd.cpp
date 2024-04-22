@@ -22,7 +22,7 @@ void listaProd::imprimirLista() const
 {
     nodoProd* actual = inicio;
     while (actual != nullptr) {
-        cout << "Codigo: " << actual->data->getCodigo() << ", Nombre: " << actual->data->getNombre() << endl;
+        cout << endl << "Codigo: " << actual->data->getCodigo() << ", Nombre: " << actual->data->getNombre() << " " << actual->data->toString() << ", Descripcion: " << actual->data->getDesc() << ", Categoria: " << actual->data->getCategoria() << endl;
         actual = actual->siguiente;
     }
 }

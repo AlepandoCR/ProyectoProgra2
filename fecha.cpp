@@ -7,8 +7,11 @@ fecha::fecha()
 	anio = 0;
 }
 
-fecha::fecha(int d, int m, int a) : dia(d), mes(m), anio(a)
+fecha::fecha(int d, int m, int a)
 {
+	dia = d;
+	mes = m;
+	anio = a;
 }
 
 fecha::fecha(fecha& fechaCopia)
@@ -22,7 +25,7 @@ fecha::~fecha()
 {
 }
 
-string fecha::toString()
+string fecha::fechaToString()
 {
 	std::stringstream s; 
 	s << "**Fecha del producto**" << endl;

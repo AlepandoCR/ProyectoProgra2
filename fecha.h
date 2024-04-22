@@ -11,7 +11,7 @@ using std::string;
 using std::stringstream;
 class fecha
 {
-private:
+protected:
 	int dia;
 	int mes;
 	int anio;
@@ -20,7 +20,7 @@ public:
 	fecha(int d, int m, int a);
 	fecha(fecha& fechaCopia);
 	virtual ~fecha();
-	string toString();
+	string fechaToString();
 	int getDia();
 	int getMes();
 	int getAnio();

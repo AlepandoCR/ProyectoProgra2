@@ -117,5 +117,5 @@ void conserva::setEnvasado(bool env)
 
 string conserva::toString()
 {
-	return string();
+	return fechaIngreso->fechaToString();
 }
