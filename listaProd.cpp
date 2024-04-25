@@ -1,28 +1,54 @@
 #include "listaProd.h"
 
-listaProd::~listaProd()
-{
-    nodoProd* actual = inicio;
-    while (actual != nullptr) {
-        nodoProd* siguiente = actual->siguiente;
-        delete actual->data; 
-        delete actual;       
-        actual = siguiente;
+listaProd::~listaProd() {
+    for (producto* elemento : elementos) {
+        delete elemento;
     }
 }
 
-void listaProd::agregarProducto(producto* producto)
-{
-    nodoProd* nuevoNodo = new nodoProd(producto);
-    nuevoNodo->siguiente = inicio;
-    inicio = nuevoNodo;
+void listaProd::agregarElemento(producto* elemento) {
+    elementos.push_back(elemento);
 }
 
-void listaProd::imprimirLista() const
-{
-    nodoProd* actual = inicio;
-    while (actual != nullptr) {
-        cout << endl << "Codigo: " << actual->data->getCodigo() << ", Nombre: " << actual->data->getNombre() << " " << actual->data->toString() << ", Descripcion: " << actual->data->getDesc() << ", Categoria: " << actual->data->getCategoria() << endl;
-        actual = actual->siguiente;
+void listaProd::imprimirLista() const {
+    for (producto* elemento : elementos) {
+        cout << elemento->toString() << endl;
     }
+}
+
+producto* listaProd::getElemento(int indice) const {
+    if (indice >= 0 && indice < elementos.size()) {
+        return elementos[indice];
+    }
+    else {
+        return nullptr;
+    }
+}
+
+void listaProd::eliminarElemento()
+{
+    string codigo;
+    cout << "Ingrese el codigo: ";
+    cin >> codigo;
+    int i = 0;
+    while (getElemento(i) != nullptr) {
+        if (codigo == getElemento(i)->getCodigo()) {
+            delete getElemento(i);
+            elementos.erase(elementos.begin() + i);
+            return;
+        }
+        i++;
+    }
+}
+
+producto* listaProd::getProdPorCod(string codigo)
+{
+    int i = 0;
+    while (getElemento(i) != nullptr) {
+        if (codigo == getElemento(i)->getCodigo()) {
+            return getElemento(i);
+        }
+        i++;
+    }
+    return nullptr;
 }

@@ -13,6 +13,7 @@ protected:
 	int existencias;
 	int limite;
 public:
+	virtual ~producto() {}
 	virtual string getCodigo() = 0;
 	virtual string getNombre() = 0;
 	virtual string getDesc() = 0;
@@ -20,9 +21,7 @@ public:
 	virtual double getPrecioCosto() = 0;
 	virtual int getExistencias() = 0;
 	virtual int getLimite() = 0;
-
 	virtual string toString() = 0;
-
 	virtual void setCodigo(string) = 0;
 	virtual void setNombre(string) = 0;
 	virtual void setDescripcion(string) = 0;

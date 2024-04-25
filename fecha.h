@@ -4,11 +4,13 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <vector>
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
 using std::stringstream;
+using std::vector;
 class fecha
 {
 protected:

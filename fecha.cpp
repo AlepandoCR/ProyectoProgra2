@@ -28,7 +28,6 @@ fecha::~fecha()
 string fecha::fechaToString()
 {
 	std::stringstream s; 
-	s << "**Fecha del producto**" << endl;
 	s << dia << "/" << mes << "/" << anio << endl;
 	return s.str();
 }

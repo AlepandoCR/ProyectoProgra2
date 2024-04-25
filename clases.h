@@ -21,4 +21,6 @@ using std::stringstream;
 #include "producto.h"
 #include "listaProd.h"
 #include "persona.h"
+#include "factura.h"
+#include "listaClientes.h"
 #endif 

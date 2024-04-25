@@ -28,6 +28,7 @@ conserva::conserva(conserva& conse)
 
 conserva::~conserva()
 {
+	
 }
 
 string conserva::getCodigo()
@@ -117,5 +118,15 @@ void conserva::setEnvasado(bool env)
 
 string conserva::toString()
 {
-	return fechaIngreso->fechaToString();
+	stringstream s;
+	s << "Codigo: " << codigo << endl;
+	s << "Nombre: " << nombreComercial << endl;
+	s << "Descripcion: " << descripcion << endl;
+	s << "Precio: " << precioCoste << endl;
+	s << "Categoria: " << categoria << endl;
+	s << "Existencias: " << existencia << endl;
+	s << "Limite: " << limite << endl;
+	s << "Envasado: " << envasado << endl;
+	s << "Fecha de ingreso: " << fechaIngreso->fechaToString();
+	return s.str();
 }
