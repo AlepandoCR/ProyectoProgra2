@@ -23,6 +23,9 @@ public:
 	persona(string, string);
 	string getNombre();
 	string getCedula();
+	persona& operator= (const persona& per2);
+	friend ostream& operator<<(ostream& os, const persona& per2);
+	friend istream& operator>>(istream& is, persona& per2);
 	string toString();
 	void sumarDineroInvertido(double);
 };
