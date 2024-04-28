@@ -4,7 +4,13 @@ void interfaz::menuFacturas(listaFact& listaFacturas, listaClientes& listaClient
     string numero;
     factura* aux;
     while (menu != 3) {
-        cout << "1-Eliminar Factura" << endl << "2-Actualizar factura" << endl << "3-Volver" << endl;
+
+        cout << "*-----------------------*" << endl
+            << "|<1>Eliminar Factura    |" << endl
+            << "|<2>Actualizar Factura  |" << endl
+            << "|<3>Volver              |" << endl
+            << "*-----------------------*" << endl;
+
         if (!(cin >> menu)) {
             menu = -1;
             cout << "Error en la digitacion" << endl;
@@ -28,10 +34,18 @@ void interfaz::menuFacturas(listaFact& listaFacturas, listaClientes& listaClient
         }
     }
 }
-void agregarProducto(listaProd &listaProductos) {
+void agregarProducto(listaProd& listaProductos) {
     int menu = 0;
     while (menu != 5) {
-        cout << "1-Conserva" << endl << "2-Abarrote" << endl << "3-Carne" << endl << "4-Embutido" << endl << "5-Salir";
+
+        cout << "*-----------------------*" << endl
+            << "|<1>Conserva            |" << endl
+            << "|<2>Abarrote            |" << endl
+            << "|<3>Carne               |" << endl
+            << "|<4>Embutido            |" << endl
+            << "|<5>Salir               |" << endl
+            << "*-----------------------*" << endl;
+
         cin >> menu;
         if (menu == 1) {
             conserva* product = new conserva();
@@ -61,17 +75,24 @@ void agregarProducto(listaProd &listaProductos) {
             break;
         }
     }
-    
 
-    
-    
+
+
+
 }
-void interfaz::menuProductos(listaProd &listaProductos) {
+void interfaz::menuProductos(listaProd& listaProductos) {
     int menu = 0;
     string codigo;
     producto* aux = NULL;
     while (menu != 4) {
-        cout << "1-Ingreso producto" << endl << "2-Eliminar producto" << endl << "3-Modificar producto" << endl << "4-Volver" << endl;
+
+        cout << "*---------------------------*" << endl
+            << "|<1>Ingreso del producto    |" << endl
+            << "|<2>Eliminar producto       |" << endl
+            << "|<3>Modificar el producto   |" << endl
+            << "|<4>Volver al menu anterior |" << endl
+            << "*---------------------------*" << endl;
+
         if (!(cin >> menu)) {
             menu = -1;
             cout << "Error en la digitacion" << endl;
@@ -90,7 +111,7 @@ void interfaz::menuProductos(listaProd &listaProductos) {
             cout << "Digite el codigo: "; cin >> codigo;
             aux = listaProductos.getProdPorCod(codigo);
             agregarProducto(listaProductos);
-            listaProductos.eliminarElementoPorIgual(aux); 
+            listaProductos.eliminarElementoPorIgual(aux);
             break;
         default:
             menu = 4;
@@ -101,7 +122,13 @@ void interfaz::menuProductos(listaProd &listaProductos) {
 void interfaz::menuManten(listaProd& listaProductos, listaClientes& listaClientela, listaFact& listaFacturas) {
     int menu = 0;
     while (menu != 3) {
-        cout << "1-Facturas" << endl << "2-Productos" << endl << "3-Volver" << endl;
+
+        cout << "*---------------------------*" << endl
+            << "|<1>Facturas                |" << endl
+            << "|<2>Productos               |" << endl
+            << "|<3>Volver al menu anterior |" << endl
+            << "*---------------------------*" << endl;
+
         if (!(cin >> menu)) {
             menu = -1;
             cout << "Error en la digitacion" << endl;
@@ -123,10 +150,15 @@ void interfaz::menuManten(listaProd& listaProductos, listaClientes& listaCliente
 void interfaz::menuVentas(listaFact& listaFacturas, listaClientes& listaClientela, listaProd& listaProductos) {
     int menu = 0;
     while (menu != 2) {
-        cout << "1-Crear factura nueva" << endl << "2-Volver" << endl;
+
+        cout << "*---------------------------*" << endl
+            << "|<1>Crear factura nueva     |" << endl
+            << "|<2>Volver al menu anterior |" << endl
+            << "*---------------------------*" << endl;
+
         if (!(cin >> menu)) {
             menu = -1;
-            cout << "Error en la digitacion" << endl; 
+            cout << "Error en la digitacion" << endl;
         }
         switch (menu)
         {
@@ -143,7 +175,7 @@ void debajoExist(listaProd lista) {
     int i = 0;
     while (lista.getElemento(i) != NULL) {
         if (lista.getElemento(i)->getExistencias() < lista.getElemento(i)->getLimite()) {
-           cout << lista.getElemento(i)->toString() << endl;
+            cout << lista.getElemento(i)->toString() << endl;
         }
         i++;
     }
@@ -186,7 +218,16 @@ void mejoresCinco(listaClientes lista) {
 void interfaz::menuReportes(listaProd lista, listaFact listaFacturas, listaClientes listaCli) {
     int menu = 0;
     while (menu != 6) {
-        cout << "1-Reportar todos los productos del minisuper" << endl << "2-Reportar todos los productos de una categoria" << endl << "3-Reportar los productos que estan por debajo del minimo de su existencia" << endl << "4-Reportar facturas de un cliente especifico por cedula" << endl << "5-Reportar la cedula de los mejores 5 clientes del minisuper" << endl << "6-Volver" << endl;
+
+        cout << "*-------------------------------------------------------------------------------*" << endl
+            << "|<1>Reporte de todos los productos del minisuper                                |" << endl
+            << "|<2>Reporte de todos los productos de una categoria                             |" << endl
+            << "|<3>Reporte de los productos que estan por debajo del minimo de su existencia   |" << endl
+            << "|<4>Reporte de las facturas de un cliente especifico por cedula                 |" << endl
+            << "|<5>Reporte de la cedula de los mejores 5 clientes del minisuper                |" << endl
+            << "|<2>Volver al menu anterior                                                     |" << endl
+            << "*-------------------------------------------------------------------------------*" << endl;
+
         if (!(cin >> menu)) {
             cin.clear(); // Limpiar el estado de error
             cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada incorrecta
@@ -228,10 +269,17 @@ void interfaz::productosPorCategoria(listaProd& lista) {
         i++;
     }
 }
-void interfaz::menuPrinci(listaProd &listaProductos, listaClientes &listaClientela, listaFact& listaFacturas) {
+void interfaz::menuPrinci(listaProd& listaProductos, listaClientes& listaClientela, listaFact& listaFacturas) {
     int menu = 0;
     while (menu != 4) {
-        cout << "1-Manten" << endl << "2-Ventas" << endl << "3-Report" << endl << "4-Salir" << endl;
+
+        cout << "*---------------------------*" << endl
+            << "|<1>Mantenimiento           |" << endl
+            << "|<2>Ventas                  |" << endl
+            << "|<3>Reportes                |" << endl
+            << "|<4>Volver al menu anterior |" << endl
+            << "*---------------------------*" << endl;
+
         if (!(cin >> menu)) {
             menu = -1;
             cout << "Error en la digitacion" << endl;
