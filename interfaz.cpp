@@ -163,6 +163,9 @@ void mejoresCinco(listaClientes lista) {
     for (int i = 0; i < 5 && mejores[i]; ++i) {
         std::cout << "Nombre: " << mejores[i]->getNombre() << ", Dinero invertido: " << mejores[i]->getDineroInvertido() << std::endl;
     }
+    for (int i = 0; i < 5; i++) {
+        delete mejores[i];
+    }
 }
 void interfaz::menuReportes(listaProd& lista, listaFact listaFacturas, listaClientes listaCli) {
     int menu = 0;
