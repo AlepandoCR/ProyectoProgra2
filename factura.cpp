@@ -5,9 +5,9 @@ factura::~factura()
 	listaDeProductos.~listaProd();
 }
 
-factura::factura(string numeroFact, string cedula , listaClientes& lista)
+factura::factura(string numeroFact, string cedula, listaClientes& lista)
 {
-	if(lista.getPersonaPorCed(cedula) == nullptr) {
+	if (lista.getPersonaPorCed(cedula) == nullptr) {
 		cout << "No se encontro un cliente con esa cedula" << endl << "Anadir nuevo cliente:" << endl;
 		lista.CrearCliente();
 	}
@@ -32,6 +32,39 @@ void factura::comprarProducto(producto* prod, listaClientes& lista)
 {
 	listaDeProductos.agregarElemento(prod);
 	calcularTotal(lista);
+}
+
+factura& factura::operator= (const factura& fac2)
+{
+	this->numeroDeFactura = fac2.numeroDeFactura;
+	this->listaDeProductos = fac2.listaDeProductos;
+	this->monto = fac2.monto;
+	this->total = fac2.total;
+	this->IVA = fac2.IVA;
+	this->clienteVinculado = fac2.clienteVinculado;
+
+	return *this;
+}
+
+ostream& operator<<(ostrean& os, const factura& fac2)
+{
+	os << "Numero de la factura: " << fac2.numeroDeFactura << ", Monto: " << fac2.monto << ", Total: " << fac2.total << ", IVA: " << fac2.IVA << ", Cédula de la factura: " << fac2.clienteVinculado;
+	return os;
+}
+
+istream& operator>>(istream& is, const factura& fac2)
+{
+	cout << "Numero de la factura: ";
+	is >> fac2.numeroDeFactura;
+	cout << "Ingrese el monto: ";
+	is >> fac2.monto;
+	cout << "Ingrese el total: ";
+	is >> fac2.total;
+	cout << "Ingrese el IVA: ";
+	is >> fac2.IVA;
+	cout << "Ingrese la cedula del cliente: ";
+	is >> fac2.clienteVinculado;
+	return is;
 }
 
 string factura::toString() {
