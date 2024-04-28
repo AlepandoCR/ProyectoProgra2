@@ -28,95 +28,95 @@ conserva::conserva(conserva& conse)
 
 conserva::~conserva()
 {
-	
+
 }
 
-string conserva::getCodigo()
+string conserva::getCodigo() const override
 {
 	return codigo;
 }
 
-string conserva::getNombre()
+string conserva::getNombre() const override
 {
 	return nombreComercial;
 }
 
-string conserva::getDesc()
+string conserva::getDesc() const override
 {
 	return descripcion;
 }
 
-string conserva::getCategoria()
+string conserva::getCategoria() const override
 {
 	return categoria;
 }
 
-int conserva::getExistencias()
+int conserva::getExistencias() const override
 {
 	return existencia;
 }
 
-int conserva::getLimite()
+int conserva::getLimite() const override
 {
 	return limite;
 }
 
-double conserva::getPrecioCosto()
+double conserva::getPrecioCosto() const override
 {
 	return precioCoste;
 }
 
-bool conserva::getEnvasado()
+bool conserva::getEnvasado() const
 {
 	return envasado;
 }
 
-fecha* conserva::getFechaIngreso()
+fecha* conserva::getFechaIngreso() const
 {
 	return fechaIngreso;
 }
 
-void conserva::setCodigo(string cod)
+void conserva::setCodigo(string cod) override
 {
 	codigo = cod;
 }
 
-void conserva::setNombre(string nomComercial)
+void conserva::setNombre(string nomComercial) override
 {
 	nombreComercial = nomComercial;
 }
 
-void conserva::setDescripcion(string desc)
+void conserva::setDescripcion(string desc) override
 {
 	descripcion = desc;
 }
 
-void conserva::setCategoria(string cat)
+void conserva::setCategoria(string cat) override
 {
 	categoria = cat;
 }
 
-void conserva::setExistencias(int exist)
+void conserva::setExistencias(int exist) override
 {
 	existencia = exist;
 }
 
-void conserva::setLimite(int lim)
+void conserva::setLimite(int lim) override
 {
 	limite = lim;
 }
 
-void conserva::setPrecioCosto(double preCosto)
+void conserva::setPrecioCosto(double preCosto) override
 {
 	precioCoste = preCosto;
 }
 
-void conserva::setEnvasado(bool env)
+void conserva::setEnvasado(bool env) override
 {
 	envasado = env;
 }
 
-string conserva::toString()
+string conserva::toString() const override
 {
 	stringstream s;
 	s << "Codigo: " << codigo << endl;
