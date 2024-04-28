@@ -32,52 +32,52 @@ perecedero::~perecedero()
 {
 }
 
-string perecedero::getCodigo()
+string perecedero::getCodigo() const
 {
 	return codigo;
 }
 
-string perecedero::getNombre()
+string perecedero::getNombre() const
 {
 	return nombreComercial;
 }
 
-string perecedero::getDesc()
+string perecedero::getDesc() const
 {
 	return descripcion;
 }
 
-string perecedero::getCategoria()
+string perecedero::getCategoria() const
 {
 	return categoria;
 }
 
-double perecedero::getPrecioCosto()
+double perecedero::getPrecioCosto() const
 {
 	return precioCosto;
 }
 
-int perecedero::getExistencias()
+int perecedero::getExistencias() const
 {
 	return existencias;
 }
 
-int perecedero::getLimite()
+int perecedero::getLimite() const
 {
 	return limite;
 }
 
-bool perecedero::getNacional()
+bool perecedero::getNacional() const
 {
 	return nacional;
 }
 
-double perecedero::getPeso()
+double perecedero::getPeso() const
 {
 	return peso;
 }
 
-string perecedero::toString()
+string perecedero::toString() const
 {
 	return string();
 }
