@@ -19,17 +19,17 @@ public:
     perecedero(string, string, string, string, double, int, int, bool, double, fecha*);
     ~perecedero();
 
-    string getCodigo();
-    string getNombre();
-    string getDesc();
-    string getCategoria();
-    double getPrecioCosto();
-    int getExistencias();
-    int getLimite();
-    bool getNacional();
-    double getPeso();
+    string getCodigo() const;
+    string getNombre() const;
+    string getDesc() const;
+    string getCategoria() const;
+    double getPrecioCosto() const;
+    int getExistencias() const;
+    int getLimite() const;
+    bool getNacional() const;
+    double getPeso() const;
 
-    string toString();
+    string toString() const;
 
     void setCodigo(string);
     void setNombre(string);
@@ -41,5 +41,3 @@ public:
     void setNacional(bool);
     void setPeso(double);
 };
-
-#endif
