@@ -20,26 +20,26 @@ public:
 
 
 	//Get's
-	string getCodigo();
-	string getNombre();
-	string getDesc();
-	string getCategoria();
-	int getExistencias();
-	int getLimite();
-	double getPrecioCosto();
-	bool getEnvasado();
-	fecha* getFechaIngreso();
+	string getCodigo() const override;
+	string getNombre() const override;
+	string getDesc() const override;
+	string getCategoria() const override;
+	int getExistencias() const override;
+	int getLimite() const override;
+	double getPrecioCosto() const override;
+	bool getEnvasado() const;
+	fecha* getFechaIngreso() const;
 
 	//Set's
-	void setCodigo(string);
-	void setNombre(string);
-	void setDescripcion(string);
-	void setCategoria(string);
-	void setExistencias(int);
-	void setLimite(int);
-	void setPrecioCosto(double);
-	void setEnvasado(bool);
+	void setCodigo(string) override;
+	void setNombre(string) override;
+	void setDescripcion(string) override;
+	void setCategoria(string) override;
+	void setExistencias(int) override;
+	void setLimite(int) override;
+	void setPrecioCosto(double) override;
+	void setEnvasado(bool) override;
 
-	string toString();
+	string toString() const override;
 };
 #endif
