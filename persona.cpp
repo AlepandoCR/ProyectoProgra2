@@ -21,6 +21,33 @@ string persona::getCedula()
 {
 	return cedula;
 }
+
+persona& persona::operator=(const persona& per2)
+{
+	if (this != &per2) {
+		this->cedula = per2.cedula;
+		this->nombre = per2.nombre;
+		this->dineroInvertido = per2.dineroInvertido;
+	}
+	return *this;
+}
+
+ostream& operator<<(ostream& os, const persona& per2)
+{
+	os << "Cedula: " << per2.cedula << ", Nombre: " << per2.nombre << ", Dinero invertido: " << per2.dineroInvertido;
+	return os;
+}
+
+istream& operator>>(istream& is, persona& per2)
+{
+	cout << "Ingrese cedula: ";
+	is >> per2.cedula;
+	cout << "Ingrese nombre: ";
+	is >> per2.nombre;
+	cout << "Ingrese el monto del dinero invertido: ";
+	is >> per2.dineroInvertido;
+}
+
 string persona::toString()
 {
 	stringstream s;
@@ -29,10 +56,12 @@ string persona::toString()
 	s << "Dinero Invertido: " << dineroInvertido << endl;
 	return s.str();
 }
+
 void persona::sumarDineroInvertido(double d)
 {
 	dineroInvertido += d;
 }
+
 string persona::getNombre() {
 	return nombre;
 }
