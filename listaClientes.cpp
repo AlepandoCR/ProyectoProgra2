@@ -2,9 +2,9 @@
 
 
 listaClientes::~listaClientes() {
-    for (persona* elemento : elementos) {
+    /*for (persona* elemento : elementos) {
         delete elemento;
-    }
+    }*/
 }
 
 void listaClientes::agregarElemento(persona* elemento) {
@@ -51,13 +51,11 @@ void listaClientes::eliminarElemento()
     }
 }
 
-void listaClientes::CrearCliente()
+void listaClientes::CrearCliente(string ced)
 {
-    string nombre, ced;
+    string nombre;
     cout << "Ingrese el nombre del cliente: ";
     cin >> nombre;
-    cout << "Ingrese el numero de cedula del cliente: ";
-    cin >> ced;
     persona* cliente = new persona(ced, nombre);
     agregarElemento(cliente);
 }

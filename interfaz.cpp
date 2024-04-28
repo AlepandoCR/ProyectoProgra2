@@ -1,6 +1,8 @@
 #include "interfaz.h"
-void interfaz::menuFacturas(listaFact& listaFacturas, listaClientes& listaClientes) {
+void interfaz::menuFacturas(listaFact& listaFacturas, listaClientes& listaClientes, listaProd& listaProductos) {
     int menu = 0;
+    string numero;
+    factura* aux;
     while (menu != 3) {
         cout << "1-Eliminar Factura" << endl << "2-Actualizar factura" << endl << "3-Volver" << endl;
         if (!(cin >> menu)) {
@@ -10,9 +12,15 @@ void interfaz::menuFacturas(listaFact& listaFacturas, listaClientes& listaClient
         switch (menu)
         {
         case 1:
+            listaFacturas.imprimirLista(); cout << endl;
             listaFacturas.eliminarElemento();
             break;
         case 2:
+            listaFacturas.imprimirLista(); cout << endl;
+            cout << "Digite el numero de factura: "; cin >> numero;
+            aux = listaFacturas.getFacturaPorNumero(numero);
+            listaFacturas.crearFactura(listaClientes, listaProductos);
+            listaFacturas.eliminarElementoPorIgual(aux);
             break;
         default:
             menu = 3;
@@ -29,21 +37,28 @@ void agregarProducto(listaProd &listaProductos) {
             conserva* product = new conserva();
             product->crearConserva();
             listaProductos.agregarElemento(product);
+            break;
         }
         else if (menu == 2) {
             abarrote* product = new abarrote();
             product->crearAbarrote();
             listaProductos.agregarElemento(product);
+            break;
         }
         else if (menu == 3) {
             carne* product = new carne();
             product->crearCarne();
             listaProductos.agregarElemento(product);
+            break;
         }
         else if (menu == 2) {
             embutido* product = new embutido();
             product->crearEmbutido();
             listaProductos.agregarElemento(product);
+            break;
+        }
+        else {
+            break;
         }
     }
     
@@ -94,7 +109,7 @@ void interfaz::menuManten(listaProd& listaProductos, listaClientes& listaCliente
         switch (menu)
         {
         case 1:
-            menuFacturas(listaFacturas, listaClientela);
+            menuFacturas(listaFacturas, listaClientela, listaProductos);
             break;
         case 2:
             menuProductos(listaProductos);
@@ -133,12 +148,14 @@ void debajoExist(listaProd lista) {
         i++;
     }
 }
-void facturasPorCed(listaFact lista) {
+void facturasPorCed(listaFact lista, listaClientes listaClien) {
     int i = 0;
     string ced;
+    cout << "Lista de clientes: " << endl;
+    listaClien.imprimirLista();
     cout << "Ingrese la cedula que desea buscar: ";
     cin >> ced;
-    while (lista.getElemento(i) != NULL) {
+    while (lista.getElemento(i) != nullptr) {
         if (lista.getElemento(i)->getCliente()->getCedula() == ced) {
             cout << lista.getElemento(i)->toString() << endl;
         }
@@ -147,6 +164,7 @@ void facturasPorCed(listaFact lista) {
 }
 void mejoresCinco(listaClientes lista) {
     persona* mejores[5] = { nullptr };
+    int total = 0;
     int i = 0;
     while (persona* cliente = lista.getElemento(i)) {
         for (int j = 0; j < 5; ++j) {
@@ -158,21 +176,21 @@ void mejoresCinco(listaClientes lista) {
                 break;
             }
         }
-        ++i;
+        total++;
+        i++;
     }
-    for (int i = 0; i < 5 && mejores[i]; ++i) {
-        std::cout << "Nombre: " << mejores[i]->getNombre() << ", Dinero invertido: " << mejores[i]->getDineroInvertido() << std::endl;
-    }
-    for (int i = 0; i < 5; i++) {
-        delete mejores[i];
+    for (int i = 0; i < total && mejores[i]; ++i) {
+        if (mejores[i] != NULL) { cout << "Nombre: " << mejores[i]->getNombre() << ", Dinero invertido: " << mejores[i]->getDineroInvertido() << ", Cedula: " << mejores[i]->getCedula() << endl; }
     }
 }
-void interfaz::menuReportes(listaProd& lista, listaFact listaFacturas, listaClientes listaCli) {
+void interfaz::menuReportes(listaProd lista, listaFact listaFacturas, listaClientes listaCli) {
     int menu = 0;
     while (menu != 6) {
         cout << "1-Reportar todos los productos del minisuper" << endl << "2-Reportar todos los productos de una categoria" << endl << "3-Reportar los productos que estan por debajo del minimo de su existencia" << endl << "4-Reportar facturas de un cliente especifico por cedula" << endl << "5-Reportar la cedula de los mejores 5 clientes del minisuper" << endl << "6-Volver" << endl;
         if (!(cin >> menu)) {
-            menu = -1;
+            cin.clear(); // Limpiar el estado de error
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Descartar la entrada incorrecta
+            menu = 6;
             cout << "Error en la digitacion" << endl;
         }
         switch (menu)
@@ -187,7 +205,7 @@ void interfaz::menuReportes(listaProd& lista, listaFact listaFacturas, listaClie
             debajoExist(lista);
             break;
         case 4:
-            facturasPorCed(listaFacturas);
+            facturasPorCed(listaFacturas, listaCli);
             break;
         case 5:
             mejoresCinco(listaCli);

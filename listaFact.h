@@ -14,7 +14,11 @@ public:
 
     factura* getElemento(int) const;
 
+    factura* getFacturaPorNumero(string numero);
+
     void eliminarElemento();
+
+    void eliminarElementoPorIgual(factura*);
 
     void crearFactura(listaClientes&, listaProd&);
 };

@@ -2,9 +2,11 @@
 
 listaFact::~listaFact()
 {
-    for (factura* elemento : elementos) {
-        delete elemento;
-    }
+    /*int i = 0;
+    while (getElemento(i) != nullptr) {
+        delete getElemento(i);
+        i++;
+    }*/
 }
 void listaFact::agregarElemento(factura* elemento) {
     elementos.push_back(elemento);
@@ -24,22 +26,48 @@ factura* listaFact::getElemento(int indice) const {
         return nullptr;
     }
 }
+factura* listaFact::getFacturaPorNumero(string numero) {
+    int i = 0;
+    while (getElemento(i) != nullptr) {
+        if (numero == getElemento(i)->getNumero()) {
+            return getElemento(i);
+        }
+        i++;
+    }
+}
 
 void listaFact::eliminarElemento()
 {
     string numero;
     cout << "Ingrese el numero de factura: ";
     cin >> numero;
-    int i = 0;
-    while (getElemento(i) != nullptr) {
-        if (numero == getElemento(i)->getNumero()) {
-            delete getElemento(i);
-            elementos.erase(elementos.begin() + i);
+
+    auto it = elementos.begin();
+    while (it != elementos.end()) {
+        cout << "Analizando factura..." << endl;
+        if ((*it)->getNumero() == numero) {
+            delete* it;
+            it = elementos.erase(it);
         }
-        i++;
+        else {
+            ++it;
+        }
+    }
+    cout << "Elemento eliminado correctamente." << endl;
+}
+void listaFact::eliminarElementoPorIgual(factura* fact)
+{
+    auto it = elementos.begin();
+    while (it != elementos.end()) {
+        if (*it == fact) {
+            delete* it;
+            it = elementos.erase(it);
+        }
+        else {
+            ++it;
+        }
     }
 }
-
 void listaFact::crearFactura(listaClientes& listaClient, listaProd& listaProductos)
 {
     string numeroFac, ced, desicion;

@@ -2,12 +2,13 @@
 
 factura::~factura()
 {
+	//delete clienteVinculado;
 }
 factura::factura(string numeroFact, string cedula, listaClientes& lista)
 {
 	if (lista.getPersonaPorCed(cedula) == nullptr) {
 		cout << "No se encontro un cliente con esa cedula" << endl << "Anadir nuevo cliente:" << endl;
-		lista.CrearCliente();
+		lista.CrearCliente(cedula);
 	}
 	clienteVinculado = lista.getPersonaPorCed(cedula);
 	monto = 0.0; //Esto no se establece porque se modifica cada vez que se compra/agrega un producto a la factura
@@ -74,7 +75,7 @@ string factura::getNumero() {
 
 double factura::getMonto()
 {
-	return monto;
+	return monto; 
 }
 
 double factura::getTotal()

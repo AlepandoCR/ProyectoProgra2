@@ -8,7 +8,7 @@ public:
     //Aca quedó todo el menu, es nomas de ver que funciones 
     //llamamos o metodos para devolver facturas nuevas o eliminar otras, lo mismo con productos
    
-    void menuFacturas(listaFact&, listaClientes&);
+    void menuFacturas(listaFact&, listaClientes&, listaProd&);
 
     void menuProductos(listaProd&);
 
@@ -16,7 +16,7 @@ public:
 
     void menuVentas(listaFact&, listaClientes&, listaProd&);
 
-    void menuReportes(listaProd&, listaFact, listaClientes);
+    void menuReportes(listaProd, listaFact, listaClientes);
 
     void productosPorCategoria(listaProd&);
 

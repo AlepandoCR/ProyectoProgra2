@@ -1,11 +1,6 @@
 #include "listaProd.h"
 
 listaProd::~listaProd() {
-    for (producto* elemento : elementos) {
-        if (elemento != nullptr) {
-            delete elemento;
-        }
-    }
 }
 
 void listaProd::agregarElemento(producto* elemento) {

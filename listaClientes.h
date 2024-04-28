@@ -18,7 +18,7 @@ public:
 
     void eliminarElemento();
 
-    void CrearCliente();
+    void CrearCliente(string ced);
 };
 
 #endif
