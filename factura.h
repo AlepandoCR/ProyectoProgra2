@@ -16,9 +16,13 @@ public:
 	void calcularTotal(listaClientes&);
 	void comprarProducto(producto*, listaClientes&);
 	factura& operator= (const factura& fac2);
-	friend ostream& operator<<(ostrean& os, const factura& fac2);
-	friend istream& operator>>(istream& is, const factura& fac2);
+	friend ostream& operator<<(ostream& os, const factura& fac2);
+	friend istream& operator>>(istream& is, factura& fac2);
 	string toString();
 	string getNumero();
+	double getMonto();
+	double getTotal();
+	double getIVA();
+	persona* getCliente();
 };
 #endif

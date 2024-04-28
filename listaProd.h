@@ -15,6 +15,7 @@ public:
     producto* getElemento(int) const;
 
     void eliminarElemento();
+    void eliminarElementoPorIgual(producto*);
     producto* getProdPorCod(string codigo);
 };
 

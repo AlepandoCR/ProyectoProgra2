@@ -32,13 +32,13 @@ persona& persona::operator=(const persona& per2)
 	return *this;
 }
 
-ostream& operator<<(ostream& os, const persona& per2)
+std::ostream& operator<<(std::ostream& os, const persona& per2)
 {
 	os << "Cedula: " << per2.cedula << ", Nombre: " << per2.nombre << ", Dinero invertido: " << per2.dineroInvertido;
 	return os;
 }
 
-istream& operator>>(istream& is, persona& per2)
+std::istream& operator>>(std::istream& is, persona& per2)
 {
 	cout << "Ingrese cedula: ";
 	is >> per2.cedula;
@@ -46,6 +46,7 @@ istream& operator>>(istream& is, persona& per2)
 	is >> per2.nombre;
 	cout << "Ingrese el monto del dinero invertido: ";
 	is >> per2.dineroInvertido;
+	return is;
 }
 
 string persona::toString()
@@ -60,6 +61,11 @@ string persona::toString()
 void persona::sumarDineroInvertido(double d)
 {
 	dineroInvertido += d;
+}
+
+double persona::getDineroInvertido()
+{
+	return dineroInvertido;
 }
 
 string persona::getNombre() {

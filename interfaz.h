@@ -16,7 +16,7 @@ public:
 
     void menuVentas(listaFact&, listaClientes&, listaProd&);
 
-    void menuReportes(listaProd&);
+    void menuReportes(listaProd&, listaFact, listaClientes);
 
     void productosPorCategoria(listaProd&);
 

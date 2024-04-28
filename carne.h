@@ -5,23 +5,14 @@
 
 class carne : public prodPerecedero {
 public:
-    carne(prodPerecedero* productoBase) : productoBase(productoBase) {}
-
-   
-    virtual string getCategoria() override {
-        return "Carne";
-    }
-
-    virtual double getPrecioCosto() override {
-        return productoBase->getPrecioCosto();
-    }
-
-    virtual string toString() override {
-        return productoBase->toString() + "\nCategoría: Carne";
-    }
-
-private:
-    prodPerecedero* productoBase;
+    carne();
+    carne(string, string, string, string, string, string, string, double, int, int, bool, double, fecha*, fecha*);
+    ~carne();
+    void crearCarne();
+    string toString() const override;
+protected:
+    string parteAnimal;
+    string especiaAnimal;
 };
 
 #endif

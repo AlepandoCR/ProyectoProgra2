@@ -4,12 +4,10 @@
 class empaque {
 public:
     empaque(bool tripa) : tripa(tripa) {}
+    empaque();
+    bool isEmpaquetadoConTripa() const;
 
-    bool isEmpaquetadoConTripa() const {
-        return tripa;
-    }
-
-private:
+protected:
     bool tripa;
 };
 

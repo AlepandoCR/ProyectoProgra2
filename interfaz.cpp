@@ -20,53 +20,41 @@ void interfaz::menuFacturas(listaFact& listaFacturas, listaClientes& listaClient
         }
     }
 }
-fecha* crearFecha() {
-    int d, m, a;
-    cout << endl << "Ingrese el dia: ";
-    cin >> d;
-    cout << endl << "Ingrese el mes: ";
-    cin >> m;
-    cout << endl << "Ingrese el anio: ";
-    cin >> a;
-    fecha* fec = new fecha(d, m, a);
-    return fec;
-
-}
 void agregarProducto(listaProd &listaProductos) {
-    fecha* fech = new fecha;
-    fech = crearFecha();
-    double precio;
-    int exis, lim;
-    string nombre, codigo, categoria, desc, eleccion;
-    bool envas = false;
-    cout << endl << "Ingrese el nombre del producto: ";
-    cin >> nombre;
-    cout << endl << "Ingrese el codigo del producto: ";
-    cin >> codigo;
-    cout << endl << "Ingrese la descripcion del producto: ";
-    cin >> desc;
-    cout << endl << "Ingrese la categoria del producto: ";
-    cin >> categoria;
-    cout << endl << "Ingrese el precio del producto: ";
-    cin >> precio;
-    cout << endl << "Ingrese las existencias del producto: ";
-    cin >> exis;
-    cout << endl << "Ingrese el limite del producto: ";
-    cin >> lim;
-    cout << endl << "El producto es envasado (si/no): ";
-    cin >> eleccion;
-    /*if (eleccion == "Si" || "si") {
-        envas = true;
-    }*/
-    envas = (eleccion == "Si" || eleccion == "si");
-    conserva* product = new conserva(codigo, nombre, desc, categoria, precio, exis, lim, envas, fech);
-    listaProductos.agregarElemento(product);
+    int menu = 0;
+    while (menu != 5) {
+        cout << "1-Conserva" << endl << "2-Abarrote" << endl << "3-Carne" << endl << "4-Embutido" << endl << "5-Salir";
+        cin >> menu;
+        if (menu == 1) {
+            conserva* product = new conserva();
+            product->crearConserva();
+            listaProductos.agregarElemento(product);
+        }
+        else if (menu == 2) {
+            abarrote* product = new abarrote();
+            product->crearAbarrote();
+            listaProductos.agregarElemento(product);
+        }
+        else if (menu == 3) {
+            carne* product = new carne();
+            product->crearCarne();
+            listaProductos.agregarElemento(product);
+        }
+        else if (menu == 2) {
+            embutido* product = new embutido();
+            product->crearEmbutido();
+            listaProductos.agregarElemento(product);
+        }
+    }
+    
 
     
     
 }
 void interfaz::menuProductos(listaProd &listaProductos) {
     int menu = 0;
+    string codigo;
+    producto* aux = NULL;
     while (menu != 4) {
         cout << "1-Ingreso producto" << endl << "2-Eliminar producto" << endl << "3-Modificar producto" << endl << "4-Volver" << endl;
         if (!(cin >> menu)) {
@@ -79,9 +67,15 @@ void interfaz::menuProductos(listaProd &listaProductos) {
             agregarProducto(listaProductos);
             break;
         case 2:
+            listaProductos.imprimirLista(); cout << endl;
             listaProductos.eliminarElemento();
             break;
         case 3:
+            listaProductos.imprimirLista(); cout << endl;
+            cout << "Digite el codigo: "; cin >> codigo;
+            aux = listaProductos.getProdPorCod(codigo);
+            agregarProducto(listaProductos);
+            listaProductos.eliminarElementoPorIgual(aux); 
             break;
         default:
             menu = 4;
@@ -130,7 +124,47 @@ void interfaz::menuVentas(listaFact& listaFacturas, listaClientes& listaClientel
         }
     }
 }
-void interfaz::menuReportes(listaProd& lista) {
+void debajoExist(listaProd lista) {
+    int i = 0;
+    while (lista.getElemento(i) != NULL) {
+        if (lista.getElemento(i)->getExistencias() < lista.getElemento(i)->getLimite()) {
+           cout << lista.getElemento(i)->toString() << endl;
+        }
+        i++;
+    }
+}
+void facturasPorCed(listaFact lista) {
+    int i = 0;
+    string ced;
+    cout << "Ingrese la cedula que desea buscar: ";
+    cin >> ced;
+    while (lista.getElemento(i) != NULL) {
+        if (lista.getElemento(i)->getCliente()->getCedula() == ced) {
+            cout << lista.getElemento(i)->toString() << endl;
+        }
+        i++;
+    }
+}
+void mejoresCinco(listaClientes lista) {
+    persona* mejores[5] = { nullptr };
+    int i = 0;
+    while (persona* cliente = lista.getElemento(i)) {
+        for (int j = 0; j < 5; ++j) {
+            if (!mejores[j] || cliente->getDineroInvertido() > mejores[j]->getDineroInvertido()) {
+                for (int k = 4; k > j; --k) {
+                    mejores[k] = mejores[k - 1];
+                }
+                mejores[j] = cliente;
+                break;
+            }
+        }
+        ++i;
+    }
+    for (int i = 0; i < 5 && mejores[i]; ++i) {
+        std::cout << "Nombre: " << mejores[i]->getNombre() << ", Dinero invertido: " << mejores[i]->getDineroInvertido() << std::endl;
+    }
+}
+void interfaz::menuReportes(listaProd& lista, listaFact listaFacturas, listaClientes listaCli) {
     int menu = 0;
     while (menu != 6) {
         cout << "1-Reportar todos los productos del minisuper" << endl << "2-Reportar todos los productos de una categoria" << endl << "3-Reportar los productos que estan por debajo del minimo de su existencia" << endl << "4-Reportar facturas de un cliente especifico por cedula" << endl << "5-Reportar la cedula de los mejores 5 clientes del minisuper" << endl << "6-Volver" << endl;
@@ -147,10 +181,13 @@ void interfaz::menuReportes(listaProd& lista) {
             productosPorCategoria(lista);
             break;
         case 3:
+            debajoExist(lista);
             break;
         case 4:
+            facturasPorCed(listaFacturas);
             break;
         case 5:
+            mejoresCinco(listaCli);
             break;
         default:
             menu = 6;
@@ -187,7 +224,7 @@ void interfaz::menuPrinci(listaProd &listaProductos, listaClientes &listaCliente
             menuVentas(listaFacturas, listaClientela, listaProductos);
             break;
         case 3:
-            menuReportes(listaProductos);
+            menuReportes(listaProductos, listaFacturas, listaClientela);
             break;
         default:
             menu = 4;

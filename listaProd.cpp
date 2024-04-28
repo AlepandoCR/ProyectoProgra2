@@ -2,7 +2,9 @@
 
 listaProd::~listaProd() {
     for (producto* elemento : elementos) {
-        delete elemento;
+        if (elemento != nullptr) {
+            delete elemento;
+        }
     }
 }
 
@@ -40,7 +42,18 @@ void listaProd::eliminarElemento()
         i++;
     }
 }
-
+void listaProd::eliminarElementoPorIgual(producto* prod)
+{
+    int i = 0;
+    while (getElemento(i) != nullptr) {
+        if (prod == getElemento(i)) {
+            delete getElemento(i);
+            elementos.erase(elementos.begin() + i);
+            return;
+        }
+        i++;
+    }
+}
 producto* listaProd::getProdPorCod(string codigo)
 {
     int i = 0;

@@ -6,13 +6,10 @@
 
 class embutido : public carne, public empaque {
 public:
-    embutido(prodPerecedero* productoBase, bool tripa, string marca)
-        : carne(productoBase), empaque(tripa), marca(marca) {}
-
-    string getMarca() const {
-        return marca;
-    }
-
+    embutido();
+    embutido(string, string, string, string, string, string, string, string, double, int, int, bool, bool, double, fecha*);
+    void crearEmbutido();
+    string toString() const override;
 private:
     string marca;
 };
